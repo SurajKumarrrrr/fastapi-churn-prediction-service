@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "churn-service"
+version = "1.0.0"
+description = "Churn prediction model served with FastAPI"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Suraj Kumar Ajampudi" }]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "N"]
+ignore = ["N803", "N806"]  # X / X_train are conventional ML names
+
+[tool.ruff.lint.isort]
+known-first-party = ["churn_service"]
